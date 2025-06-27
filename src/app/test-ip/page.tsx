@@ -142,32 +142,18 @@ export default async function TestIPPage() {
         <h3 className="text-lg font-semibold mb-3">🧪 Test Scenarios:</h3>
         <ol className="list-decimal list-inside space-y-2 text-sm">
           <li>
-            <strong>Captcha (current):</strong> Visit{" "}
-            <a href="/s/tk256" className="text-blue-600 underline">
-              /s/tk256
-            </a>{" "}
-            → Should show captcha
+            <strong>Captcha (current):</strong> Visit → Should show captcha
           </li>
           <li>
-            <strong>White List:</strong> Add ::1 to white list, then visit{" "}
-            <a href="/s/tk256" className="text-blue-600 underline">
-              /s/tk256
-            </a>{" "}
-            → Should redirect to Google
+            <strong>White List:</strong> Add ::1 to white list, then visit →
+            Should redirect to Google
           </li>
           <li>
-            <strong>Black List:</strong> Add ::1 to black list, then visit{" "}
-            <a href="/s/tk256" className="text-blue-600 underline">
-              /s/tk256
-            </a>{" "}
-            → Should redirect to block page
+            <strong>Black List:</strong> Add ::1 to black list, then visit →
+            Should redirect to block page
           </li>
           <li>
-            <strong>Not Found:</strong> Visit{" "}
-            <a href="/s/nonexistent" className="text-blue-600 underline">
-              /s/nonexistent
-            </a>{" "}
-            → Should show Token Not Found
+            <strong>Not Found:</strong> Visit → Should show Token Not Found
           </li>
         </ol>
       </div>
