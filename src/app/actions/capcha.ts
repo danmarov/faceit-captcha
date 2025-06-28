@@ -9,7 +9,6 @@ import { headers } from "next/headers";
 export const checkExistingData = async () => {
   try {
     console.log("🔍 Checking existing data...");
-
     const companiesData = await db.select().from(companies);
     const tokensData = await db.select().from(tokens);
     const addressesData = await db.select().from(addresses);
@@ -185,20 +184,23 @@ export const handleToken = async (token: string) => {
     console.log("📍 IP found in list, type:", addressType);
 
     if (addressType === "white") {
-      console.log("✅ White IP, redirecting to:", url);
-      await logRequest(companyId, token, clientIP, "white", url, "redirect");
-      redirect(url);
-    } else {
-      console.log("🚫 Black/Block IP, redirecting to:", blackPage);
+      console.log(
+        "🚫 White IP (blocked), redirecting to blackPage:",
+        blackPage
+      );
       await logRequest(
         companyId,
         token,
         clientIP,
-        addressType,
+        "white",
         blackPage,
         "redirect"
       );
       redirect(blackPage);
+    } else if (addressType === "black") {
+      console.log("✅ Black IP (verified), redirecting to target URL:", url);
+      await logRequest(companyId, token, clientIP, "black", url, "redirect");
+      redirect(url);
     }
   }
 
